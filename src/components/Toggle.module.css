@@ -1,0 +1,34 @@
+.toggle_box input {
+  display: none;
+}
+
+.toggle_box input:checked + .check_btn {
+  background-color: var(--gray-text-color);
+}
+
+.toggle_box input:checked + .check_btn::before {
+  transform: translateX(18px);
+}
+
+.check_btn {
+  background-color: var(--primary-color);
+  display: inline-block;
+  height: 22px;
+  width: 40px;
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+.check_btn::before {
+  /* display: inline-block; */
+  content: "";
+  background-color: var(--white-text-color);
+  height: 16px;
+  width: 16px;
+  margin: 3px;
+  border-radius: 100px;
+  position: absolute;
+  transition: 0.3s ease-in-out;
+}

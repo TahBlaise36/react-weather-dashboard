@@ -1,0 +1,12 @@
+.profile {
+  background-color: var(--foreground-color);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100px;
+}
+
+@media (max-width: 800px) {
+  .profile {
+    display: none;
+  }
+}

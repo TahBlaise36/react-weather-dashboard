@@ -1,0 +1,130 @@
+.aside {
+  /* background-color: lightblue; */
+  padding: 0 1rem 0 0;
+}
+
+.aside_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.show_cities_btn {
+  color: var(--gray-text-color);
+  font-size: 0.9rem;
+}
+
+.fav_days_details_box {
+  max-height: 75vh;
+  overflow: scroll;
+  /* background-color: rgb(255, 255, 99); */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fav_days_details_box::-webkit-scrollbar {
+  display: none;
+}
+
+.fav_day_details {
+  width: 15rem;
+  /* max-width: 20rem; */
+  background-color: var(--foreground-color);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.fav_day_details .temp_text {
+  color: var(--gray-text-color);
+  font-size: 0.7rem;
+}
+
+.fav_day_details .temp {
+  font-size: 1.5rem;
+  margin-top: 0.4rem;
+  position: relative;
+}
+
+.fav_day_details .temp::before {
+  content: "0";
+  display: inline-block;
+  color: var(--light-text-color);
+
+  font-weight: 400;
+  position: absolute;
+  font-size: 0.4rem;
+
+  top: 0px;
+  right: 4px;
+}
+
+.fav_day_details .temp::after {
+  content: "c";
+  display: inline-block;
+  color: var(--light-text-color);
+  font-size: 1.2rem;
+  font-weight: 300;
+  position: absolute;
+
+  top: -5px;
+  right: -5px;
+}
+
+@media (max-width: 800px) {
+  .aside {
+    padding: 0 1rem;
+
+    grid-column: 1 / -1;
+  }
+
+  /* .aside_header {
+        margin-bottom: 0.5rem;
+      } */
+
+  .fav_days_details_box {
+    /* max-height: 75vh; */
+    /* overflow: scroll; */
+    /* padding: 0 1rem; */
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .fav_day_details {
+    /* width: 15rem;
+        max-width: 20rem; */
+    padding: 0.5rem 1rem;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .fav_details p {
+    display: none;
+  }
+
+  .fav_details h3 {
+    font-size: 1rem;
+  }
+
+  .fav_day_details {
+    width: 6rem;
+    /* max-width: 20rem;  */
+    padding: 0.8rem;
+    flex: 0 0 auto;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .fav_day_details .temp_text {
+    font-size: 0.6rem;
+  }
+}
