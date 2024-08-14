@@ -4,7 +4,7 @@
 
 ## Description
 
-This project is a tool that helps users get the weather informations about any city the search for. Users are also able save their favorite cities so they can get the details back about that city without having to search manuly.
+This project is a software that helps users get the weather informations about any city the search for. Users are also able save their favorite cities so they can get the details back about that city without having to search manuly.
 
 ## Table of Contents
 
@@ -42,30 +42,52 @@ npm install
 ## Features
 
 - Users are able to login and access the weather dashboard.
+
 - Users are able to search for any city by typing the city name.
+
 - User can save the current city they have searched for, by clicking the add city button.
+
 - Users are able to view the cities they have saved in the dashboard.
+
 - Users are able to search for any city from the saved list, by clicking on the city.
+
 - Users are able to delete a city from thier favorite cities list.
+
 - Users recieved notification if the city has successfuly been added to or deleted from thier favorite cities list.
 
-## Folder/File structure
+## Folder/File_structure
 
-- ui: This folder contains complex components for each features of the dashboard performing the various functionalities.
+### ui:
 
-- components: This folder contains re-usable react components that can be used anyware within the application.
+- This folder contains complex components for each features of the dashboard performing the various functionalities.
 
-- authentication: This folder contains the login and sign up forms pages and also functions for authenticating users to the dashboard.
+### components:
 
-- services: This folder is where we interact with the superbase api performing the various CRUD operations and authentication.
+- This folder contains re-usable react components that can be used anyware within the application.
 
-- hooks: This folder contains re-usable hooks most especially the useWeather hook for fetching city location and weather data.
+### authentication:
 
-- utils: This folder contains re-usable functions that can be used anyware within the application.
+- This folder contains the login and sign up forms pages and also functions for authenticating users to the dashboard.
 
-- assets: This folder contain all images in the application.
+### services:
 
-- constants: This folder imports all images and exports them as names.
+- This folder is where we interact with the superbase api performing the various CRUD operations and authentication.
+
+### hooks:
+
+- This folder contains re-usable hooks most especially the useWeather hook for fetching city location and weather data.
+
+### utils:
+
+- This folder contains re-usable functions that can be used anyware within the application.
+
+### assets:
+
+- This folder contain all images in the application.
+
+### constants:
+
+- This folder imports all images and exports them as names.
 
 ## Libraries
 
