@@ -20,21 +20,19 @@ export default function Weather({ weatherData, isLoading, error }) {
       {!isLoading && (
         <>
           <div className={styles.today_details_box}>
-            <div className="primary-header-box">
-              <h2 className="primary-header">Today's Weather</h2>
+            <div className={styles.primary_header_box}>
+              <h2 className={styles.primary_header}>Today's Weather</h2>
             </div>
 
             <TodayWeather
-              day="Monday"
               country={getCountryName(city.country)}
               city={city.name}
-              tempText="Mostly Clear"
               todaysData={list[0]}
             />
           </div>
           <div>
-            <div className="primary-header-box">
-              <h2 className="primary-header">Weekly Forecast</h2>
+            <div className={styles.primary_header_box}>
+              <h2 className={styles.primary_header}>Weekly Forecast</h2>
             </div>
 
             <NextDaysWeather list={list} />
@@ -46,7 +44,7 @@ export default function Weather({ weatherData, isLoading, error }) {
   );
 }
 
-function TodayWeather({ country, city, tempText, img, todaysData }) {
+function TodayWeather({ country, city, todaysData }) {
   const { dt_txt, main, weather } = todaysData;
   const date = dt_txt.slice().split(" ")[0];
   const time = dt_txt.slice().split(" ")[1];

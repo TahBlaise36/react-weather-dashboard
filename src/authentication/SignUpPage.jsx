@@ -7,7 +7,11 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    if (!name || !email || !password) return;
+  }
   return (
     <div className={styles.sign_up_form}>
       <form className={styles.box} onSubmit={handleSubmit} method="post">

@@ -25,7 +25,7 @@ function SearchBox({ onSetCity }) {
   function handleSubmit(e) {
     e.preventDefault();
     onSetCity(query);
-    // setQuery("");
+    setQuery("");
   }
 
   return (

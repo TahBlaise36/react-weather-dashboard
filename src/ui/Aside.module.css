@@ -10,6 +10,12 @@
   margin-bottom: 1rem;
 }
 
+.primary_header {
+  color: var(--gray-text-color);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
 .show_cities_btn {
   color: var(--gray-text-color);
   font-size: 0.9rem;
@@ -114,9 +120,13 @@
     grid-column: 1 / -1;
   }
 
-  /* .aside_header {
-        margin-bottom: 0.5rem;
-      } */
+  .aside_header {
+    margin-bottom: 0.5rem;
+  }
+
+  .primary_header {
+    font-size: 1rem;
+  }
 
   .fav_days_details_box {
     /* max-height: 75vh; */

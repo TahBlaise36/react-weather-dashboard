@@ -60,22 +60,19 @@ h3 {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: 10vh;
-
-  /* row-gap: 1rem; */
   column-gap: 1rem;
 }
 
 @media (max-width: 800px) {
+  .primary-header-box {
+    margin-bottom: 0.5rem;
+  }
+
   .primary_header {
     font-size: 1.3rem;
   }
 
   .app {
-    /* display: grid; */
     grid-template-columns: 1fr 1fr;
-    /* grid-template-rows: 11vh; */
-
-    /* row-gap: 1rem; */
-    /* column-gap: 1rem; */
   }
 }

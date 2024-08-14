@@ -27,7 +27,7 @@ export default function Aside({
   return (
     <aside className={styles.aside}>
       <div className={styles.aside_header}>
-        <h2 className="primary_header">Favorite Cities</h2>
+        <h2 className={styles.primary_header}>Favorite Cities</h2>
         <p className={styles.show_cities_btn}>
           <span>Show All</span>
           <span></span>
