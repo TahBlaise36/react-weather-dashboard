@@ -1,18 +1,19 @@
 # Weather dashboard
 
-![projects url](https://react-weather-dashboard-kappa.vercel.app)
+- [visite application here](https://react-weather-dashboard-kappa.vercel.app)
 
 ## Description
 
-This project is a tool that helps users get the weather informations about any city the search for. It also helsp users save their favorite cities so the details back about that city without having to search manuly.
+This project is a tool that helps users get the weather informations about any city the search for. Users are also able save their favorite cities so they can get the details back about that city without having to search manuly.
 
 ## Table of Contents
 
 - [Installation](#installation)
+- [Technologies](#technologies)
 - [Usage](#usage)
 - [Features](#features)
-- [Libraries](#Libraries)
-- [Technologies](#technologies)
+- [Folder/File structure](#Folder/File_structure)
+- [Libraries](#libraries)
 
 ## Installation
 
@@ -20,14 +21,23 @@ To install this project, run the following commands:
 
 ```bash
 git clone https://github.com/TahBlaise36/react-weather-dashboard.git
-cd react-weather-dashboard
 npm install
 ```
+
+## Technologies
+
+- React
+- Vite
+- Supabase
+- CSS modules
 
 ## Usage
 
 - To use this project, run:
+
+```bash
   npm run dev
+```
 
 ## Features
 
@@ -38,6 +48,24 @@ npm install
 - Users are able to search for any city from the saved list, by clicking on the city.
 - Users are able to delete a city from thier favorite cities list.
 - Users recieved notification if the city has successfuly been added to or deleted from thier favorite cities list.
+
+## Folder/File structure
+
+- ui: This folder contains complex components for each features of the dashboard performing the various functionalities.
+
+- components: This folder contains re-usable react components that can be used anyware within the application.
+
+- authentication: This folder contains the login and sign up forms pages and also functions for authenticating users to the dashboard.
+
+- services: This folder is where we interact with the superbase api performing the various CRUD operations and authentication.
+
+- hooks: This folder contains re-usable hooks most especially the useWeather hook for fetching city location and weather data.
+
+- utils: This folder contains re-usable functions that can be used anyware within the application.
+
+- assets: This folder contain all images in the application.
+
+- constants: This folder imports all images and exports them as names.
 
 ## Libraries
 
@@ -58,10 +86,3 @@ npm install
 - [eslint-config-react-app]
 - [eslint-plugin-react]
 - [vite-plugin-eslint]
-
-## Technologies
-
-- React
-- Vite
-- Supabase
-- CSS modules
