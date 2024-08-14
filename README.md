@@ -12,10 +12,7 @@ This project is a tool that helps users get the weather informations about any c
 - [Usage](#usage)
 - [Features](#features)
 - [Libraries](#Libraries)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+- [Technologies](#technologies)
 
 ## Installation
 
