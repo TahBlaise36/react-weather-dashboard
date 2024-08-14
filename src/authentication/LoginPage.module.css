@@ -1,0 +1,71 @@
+.login_form {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: var(--background-color);
+}
+.box {
+  border-radius: 20px;
+  padding: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--foreground-color);
+  text-align: center;
+}
+.box h1 {
+  color: var(--light-text-color);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.box #name,
+#email,
+#password {
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid var(--gray-text-color);
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: var(--gray-text-color);
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box #name:focus,
+#email:focus,
+#password:focus {
+  width: 280px;
+  border-color: var(--primary-color);
+}
+.box input[type="submit"],
+.box button {
+  border-radius: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid var(--primary-color);
+  padding: 14px 40px;
+  outline: none;
+  color: var(--light-text-color);
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.box input[type="submit"]:hover,
+.box button:hover {
+  background: var(--primary-color);
+}
+
+.link {
+  color: var(--gray-text-color);
+}
+
+.sign_up_link {
+  color: var(--primary-color);
+}

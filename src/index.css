@@ -1,24 +1,28 @@
 :root {
-  --primary-text-color: #242424;
-  /* --secondary-text-color: #ffffff; */
-  --background-color: #ffffffde;
-  /* --foreground-color: #242424; */
-  --toggle-bg: #f0eb9d;
-  --toggle-fg: #ffd000;
+  --primary-color: #0176ff;
+  --background-color: #27242d;
+  --foreground-color: #312e3a;
+  --hover-foreground-color: #545162;
+  --gray-text-color: #bab7c7;
+  --light-text-color: #f7f6fb;
+  --white-text-color: #ffffff;
+  --error-background: #ffd4d4;
+  --error-color: #ff2b2b;
 
   --line-height: 1.5;
   --font-weight: 400;
 }
 
 [data-theme="dark"] {
-  --light-text-color: #f7f6fb;
-  --gray-text-color: #bab7c7;
   --primary-color: #0176ff;
-  --white-text-color: #ffffff;
   --background-color: #27242d;
   --foreground-color: #312e3a;
-  --toggle-bg: #283452;
-  --toggle-fg: #00a6ff;
+  --hover-foreground-color: #545162;
+  --gray-text-color: #bab7c7;
+  --light-text-color: #f7f6fb;
+  --white-text-color: #ffffff;
+  --error-background: #ffd4d4;
+  --error-color: #ff2b2b;
 }
 
 * {
@@ -38,18 +42,6 @@
 
 h3 {
   color: var(--light-text-color);
-}
-
-.big_weather_img {
-  height: 5rem;
-  width: 5rem;
-  background-color: var(--light-text-color);
-}
-
-.weather_img {
-  height: 2rem;
-  width: 2rem;
-  background-color: var(--light-text-color);
 }
 
 .degree {

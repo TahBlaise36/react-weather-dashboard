@@ -34,13 +34,26 @@
   font-size: 0.8rem;
 }
 
-.add_city_btn {
-  padding: 0.8rem 2.5rem;
+.add_city_btn,
+.seach_btn {
   background-color: var(--primary-color);
   color: var(--light-text-color);
   font-weight: 600;
   border: none;
   border-radius: 100px;
+  cursor: pointer;
+}
+
+.add_city_btn {
+  padding: 0.8rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.seach_btn {
+  padding: 0.8rem 1rem;
 }
 
 .profile_box {
@@ -63,6 +76,16 @@
     /* padding: 0 1rem; */
   }
 
+  .profile_box {
+    gap: 1rem;
+  }
+
+  .add_city_btn {
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 500px) {
   .add_city_btn {
     padding: 0;
     height: 35px;
@@ -71,7 +94,7 @@
   }
 
   .add_city_btn span:first-child {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .add_city_btn span:last-child {

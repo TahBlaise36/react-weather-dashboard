@@ -1,66 +1,179 @@
+// import { useState } from "react";
+import Spinner from "../components/Spinner";
+import formatDate, { getCountryName } from "../utils/helpers";
 import styles from "./Weather.module.css";
+import icons from "../constants/icons";
 
-export default function Weather() {
+export default function Weather({ weatherData, isLoading, error }) {
+  if (!weatherData)
+    return (
+      <div className={styles.error_box}>
+        <div></div>
+        <h2>You are offline</h2>
+        <p>Please check your connection</p>
+      </div>
+    );
+  const { list, city } = weatherData;
+
   return (
     <main className={styles.main}>
-      <div className={styles.today_details_box}>
-        <div className="primary-header-box">
-          <h2 className="primary-header">Today's Weather</h2>
-        </div>
+      {!isLoading && (
+        <>
+          <div className={styles.today_details_box}>
+            <div className="primary-header-box">
+              <h2 className="primary-header">Today's Weather</h2>
+            </div>
 
-        <TodayWeather
-          day="Monday"
-          country="Cameroon"
-          city="younde"
-          deg="24"
-          tempText="Mostly Clear"
-        />
-      </div>
-      <div>
-        <div className="primary-header-box">
-          <h2 className="primary-header">Next 5 Days</h2>
-        </div>
+            <TodayWeather
+              day="Monday"
+              country={getCountryName(city.country)}
+              city={city.name}
+              tempText="Mostly Clear"
+              todaysData={list[0]}
+            />
+          </div>
+          <div>
+            <div className="primary-header-box">
+              <h2 className="primary-header">Weekly Forecast</h2>
+            </div>
 
-        <div className={styles.next_days_details_box}>
-          <DayDetails day={"Tue"} deg={"10"} />
-          <DayDetails day={"Wed"} deg={"15"} />
-          <DayDetails day={"Thu"} deg={"11"} />
-          <DayDetails day={"Fri"} deg={"18"} />
-          <DayDetails day={"Sat"} deg={"12"} />
-        </div>
-      </div>
+            <NextDaysWeather list={list} />
+          </div>
+        </>
+      )}
+      {isLoading && <Spinner />}
     </main>
   );
 }
 
-function TodayWeather({ day, country, city, deg, tempText, img }) {
+function TodayWeather({ country, city, tempText, img, todaysData }) {
+  const { dt_txt, main, weather } = todaysData;
+  const date = dt_txt.slice().split(" ")[0];
+  const time = dt_txt.slice().split(" ")[1];
+  const formatedDay = formatDate(date);
+  const day = formatedDay.slice().split(", ")[0];
+  const month = formatedDay.slice().split(", ")[1];
+  const year = formatedDay.slice().split(" ")[3];
+  const period = formatedDay.slice().split(" ")[6];
+  const deg = (main.temp - 273.15).toFixed(0);
+  const description = weather[0].description;
+  const detail = weather[0].main;
+
+  let imageSrc = "";
+  switch (detail) {
+    case "Clear":
+      imageSrc = `${icons.clear}`;
+      break;
+    case "Clouds":
+      imageSrc = `${icons.cloud}`;
+      break;
+    case "Drizzle":
+      imageSrc = `${icons.drizzle}`;
+      break;
+    case "Rain":
+      imageSrc = `${icons.rain}`;
+      break;
+    case "Snow":
+      imageSrc = `${icons.snow}`;
+      break;
+    default:
+      imageSrc = "";
+  }
+
   return (
     <div className={styles.today_weather_box}>
       <div>
         <div className={styles.day_location_details}>
-          <h3>{day}</h3>
+          <div className={styles.day_box}>
+            <h3>{day}</h3>
+            <div>
+              <p>
+                {month}, {year}
+              </p>
+              <p>
+                {time} {period}
+              </p>
+            </div>
+          </div>
           <p>
             <span></span>
             <span className={styles.location}>
-              {country}, {city}
+              {city}, {country}
             </span>
           </p>
         </div>
         <div>
           <span className={styles.temp}>{deg}</span>
-          <span className={styles.temp_text}>{tempText}</span>
+          <span className={styles.temp_text}>{description}</span>
         </div>
       </div>
-      <div className="big_weather_img"></div>
+      <div className={styles.big_weather_img_box}>
+        <img src={imageSrc} alt={detail} />
+      </div>
     </div>
   );
 }
 
-function DayDetails({ day, img, deg }) {
+function NextDaysWeather({ list }) {
+  let newList = [];
+  let dayStep = 8;
+  for (let i = 0; i < list.length; i += dayStep) {
+    newList = [...newList, list[i]];
+  }
+
   return (
-    <div className={styles.day_details}>
+    <div className={styles.next_days_details_box}>
+      {newList.map((day) => (
+        <DayDetails
+          key={day.dt}
+          id={day.dt}
+          dateText={day.dt_txt}
+          temp={day.main.temp}
+          detail={day.weather[0].main}
+        />
+      ))}
+    </div>
+  );
+}
+
+function DayDetails({ id, dateText, img, temp, detail }) {
+  const date = dateText.slice().split(" ")[0];
+  const formatedDay = formatDate(date);
+  const deg = (temp - 273.15).toFixed(0);
+  const day = formatedDay
+    .slice()
+    .split(", ")[0]
+    .split("")
+    .splice(0, 3)
+    .join("");
+
+  let imageSrc = "";
+  switch (detail) {
+    case "Clear":
+      imageSrc = `${icons.clear}`;
+      break;
+    case "Clouds":
+      imageSrc = `${icons.cloud}`;
+      break;
+    case "Drizzle":
+      imageSrc = `${icons.drizzle}`;
+      break;
+    case "Rain":
+      imageSrc = `${icons.rain}`;
+      break;
+    case "Snow":
+      imageSrc = `${icons.snow}`;
+      break;
+    default:
+      imageSrc = "";
+  }
+
+  return (
+    <div className={`${styles.day_details}`}>
       <h4 className={styles.day}>{day}</h4>
-      <div className="weather_img"></div>
+      <div className={styles.small_weather_img_box}>
+        <img src={imageSrc} alt="cloud_icon" />
+      </div>
       <p className={styles.temp}>{deg}</p>
     </div>
   );

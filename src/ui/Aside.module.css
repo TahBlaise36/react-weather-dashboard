@@ -37,8 +37,40 @@
 
   display: flex;
   justify-content: space-between;
+  transition: background-color 0.3s;
 }
 
+.fav_day_details div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.remove_btn {
+  background-color: var(--error-background);
+  color: var(--error-color);
+  border: none;
+  /* height: 1.5rem;
+  width: 1.5rem; */
+  padding: 0.5rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+.fav_day_details:hover {
+  background-color: var(--hover-foreground-color);
+}
+.fav_day_details.active {
+  background-color: var(--hover-foreground-color);
+}
+
+.fav_day_details .date {
+  color: var(--gray-text-color);
+  font-size: 0.7rem;
+}
 .fav_day_details .temp_text {
   color: var(--gray-text-color);
   font-size: 0.7rem;
