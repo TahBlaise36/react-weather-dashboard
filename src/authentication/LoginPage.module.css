@@ -8,7 +8,7 @@
 }
 .box {
   border-radius: 20px;
-  padding: 3rem;
+  padding: 2.5rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,6 +42,7 @@
   width: 280px;
   border-color: var(--primary-color);
 }
+
 .box input[type="submit"],
 .box button {
   border-radius: 0;

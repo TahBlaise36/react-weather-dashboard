@@ -35,7 +35,7 @@ export default function SignUpPage() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Userpassword"
         />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Sign up" />
 
         <p className={styles.link}>
           <span>Already have an account?</span>{" "}
