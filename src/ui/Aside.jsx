@@ -107,7 +107,7 @@ function FavoriteDayDetails({
         <h3 className="city">{city}</h3>
         <p className={styles.temp_text}>{country}</p>
       </div>
-      <div className="fav_stats">
+      <div className={styles.fav_stats}>
         <button
           onClick={() => handleDelete(id)}
           className={styles.remove_btn}

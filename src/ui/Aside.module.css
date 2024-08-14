@@ -46,7 +46,7 @@
   transition: background-color 0.3s;
 }
 
-.fav_day_details div:last-child {
+.fav_day_details .fav_stats {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -166,7 +166,19 @@
     gap: 0.5rem;
   }
 
+  .fav_day_details .date {
+    margin-top: -8px;
+  }
+
   .fav_day_details .temp_text {
     font-size: 0.6rem;
+  }
+
+  .fav_day_details .fav_stats {
+    gap: 1rem;
+  }
+
+  .fav_day_details .fav_stats button {
+    order: 1;
   }
 }

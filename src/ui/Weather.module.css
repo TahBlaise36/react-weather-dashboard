@@ -1,15 +1,8 @@
 .main {
-  /* background-color: lightgreen; */
   padding: 1rem;
-  /* overflow: scroll; */
 }
 
-/* .main::-webkit-scrollbar {
-  display: none;
-} */
-
 .error_box {
-  /* background-color: var(--foreground-color); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,15 +53,15 @@
   justify-content: space-between;
 }
 
-.today_weather_box h3 {
-  font-size: 1.8rem;
-  color: var(--white-text-color);
-}
-
 .today_weather_box .day_box {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.today_weather_box .day_box h3 {
+  font-size: 1.8rem;
+  color: var(--white-text-color);
 }
 
 .today_weather_box .day_box p {
@@ -78,6 +71,10 @@
 
 .day_box div p:first-child {
   margin-bottom: 0.2rem;
+}
+
+.day_location_details .city_box {
+  margin-top: -6px;
 }
 
 .today_weather_box .temp {
@@ -100,8 +97,6 @@
 }
 
 .today_weather_box .temp::after {
-  /* font-size: 1.2rem; */
-
   content: "c";
   display: inline-block;
   color: var(--light-text-color);
@@ -156,7 +151,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .next_days_details_box .day {
@@ -175,7 +169,6 @@
 
   left: 50%;
   bottom: -4px;
-
   transform: translateX(-50%);
 }
 
@@ -226,8 +219,8 @@
     font-size: 1rem;
   }
 
-  .day_location_details p {
-    margin-top: -4px;
+  .day_location_details .city_box {
+    margin-top: -8px;
   }
 
   .today_weather_box {
@@ -237,6 +230,14 @@
     justify-content: space-between;
   }
 
+  .today_weather_box .day_box {
+    gap: 0.5rem;
+  }
+
+  .today_weather_box .day_box h3 {
+    font-size: 1.6rem;
+  }
+
   .today_weather_box .temp {
     font-size: 3.5rem;
   }
@@ -244,14 +245,14 @@
   .today_weather_box .temp::before {
     font-size: 0.6rem;
 
-    top: 10px;
-    right: -2px;
+    top: 8px;
+    right: -1px;
   }
 
   .today_weather_box .temp::after {
     font-size: 1.5rem;
 
-    top: 4px;
+    top: 2px;
     right: -12px;
   }
 
@@ -268,25 +269,24 @@
   .next_days_details_box .temp::before {
     font-size: 0.3rem;
 
-    top: 0px;
+    top: -1px;
     right: -2px;
   }
 
   .next_days_details_box .temp::after {
     font-size: 0.9rem;
 
-    top: -4px;
-    right: -8px;
+    top: -5px;
+    right: -9px;
   }
 
   .next_days_details_box .day::after {
-    /* height: 1px; */
     width: 36px;
   }
 
   .big_weather_img_box {
-    height: 5rem;
-    width: 5rem;
+    height: 6rem;
+    width: 6rem;
   }
 
   .small_weather_img_box {

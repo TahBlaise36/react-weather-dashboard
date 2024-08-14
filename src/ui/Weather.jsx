@@ -93,7 +93,7 @@ function TodayWeather({ country, city, todaysData }) {
               </p>
             </div>
           </div>
-          <p>
+          <p className={styles.city_box}>
             <span></span>
             <span className={styles.location}>
               {city}, {country}
