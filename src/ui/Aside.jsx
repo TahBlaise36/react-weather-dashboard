@@ -79,7 +79,7 @@ function FavoriteDayDetails({
     // OR
     mutationFn: deleteFavoriteCity,
     onSuccess: () => {
-      toast.success("City successfully deleted");
+      toast.success(`${city} has been deleted from your list`);
       queryClient.invalidateQueries({
         queryKey: ["favCities"],
       });

@@ -47,7 +47,7 @@ function AddCityButton({ weatherData, onAddFavCity }) {
   const { mutate } = useMutation({
     mutationFn: addFavoriteCity,
     onSuccess: () => {
-      toast.success("The City was successfully added");
+      toast.success(`${weatherData.city.name} was added to your list`);
       queryClient.invalidateQueries({
         queryKey: ["favCities"],
       });

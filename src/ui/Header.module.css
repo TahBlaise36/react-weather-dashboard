@@ -1,7 +1,5 @@
 .header {
-  /* background-color: #00a6ff; */
-  position: sticky;
-
+  background-color: var(--background-color);
   grid-column: 1 / -1;
 
   display: flex;
@@ -11,7 +9,6 @@
 }
 
 .search_box {
-  /* background-color: lightcoral; */
   height: 30px;
   /* justify-self: stretch; */
   flex: 1;
@@ -72,10 +69,12 @@
 
 @media (max-width: 800px) {
   .header {
-    /* grid-column: 1 / -1; */
-
+    position: sticky;
+    top: 0;
+    left: 0;
     justify-content: flex-start;
-    /* padding: 0 1rem; */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 15px rgba(49, 46, 58, 0.507); */
   }
 
   .profile_box {

@@ -42,7 +42,7 @@ function App() {
           style: {
             fontFamily: "sans-serif",
             fontSize: "16px",
-            maxWidth: "500px",
+            maxWidth: "550px",
             padding: "16px 24px",
             backgroundColor: "var(--hover-foreground-color)",
             color: "var(--light-text-color)",
