@@ -14,7 +14,7 @@ export function useWeather(city) {
         try {
           setIsLoading(true);
 
-          // 1) FECTHING COUNTRY LOCATION
+          // 1) FECTHING COUNTRY
           const curLocation = city ? city : location;
 
           const geoRes = await fetch(

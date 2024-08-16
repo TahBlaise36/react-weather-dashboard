@@ -15,6 +15,8 @@ export default function LoginPage() {
 
     if (!email || !password) return;
     login({ email, password });
+    setEmail("");
+    setPassword("");
   }
   return (
     <div className={styles.login_form}>

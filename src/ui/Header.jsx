@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import { formatShortDate, getCountryName } from "../utils/helpers";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addFavoriteCity } from "../services/api.favoriteCities";
+import { addFavoriteCity } from "../services/apiFavoriteCities";
 import toast from "react-hot-toast";
 
 export default function Header({ weatherData, onSetCity, onAddFavCity }) {
@@ -25,7 +25,7 @@ function SearchBox({ onSetCity }) {
   function handleSubmit(e) {
     e.preventDefault();
     onSetCity(query);
-    setQuery("");
+    // setQuery("");
   }
 
   return (

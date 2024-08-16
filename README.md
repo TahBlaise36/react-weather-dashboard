@@ -4,7 +4,7 @@
 
 ## Description
 
-This project is a software that helps users get the weather informations about any city the search for. Users are also able save their favorite cities so they can get the details back about that city without having to search manuly.
+This project is a software that helps users get the weather informations about any city the search for. Users are also able save their favorite cities so they can get the weather details back about that city without having to search manualy.
 
 ## Table of Contents
 
@@ -49,17 +49,17 @@ npm install
 
 - Users are able to view the cities they have saved in the dashboard.
 
-- Users are able to search for any city from the saved list, by clicking on the city.
+- Users are able to search for any city from the saved list, by clicking on the city. This will bring back the weather details of the selected city.
 
-- Users are able to delete a city from thier favorite cities list.
+- Users are able to delete some cities from thier favorite cities list.
 
-- Users recieved notification if the city has successfuly been added to or deleted from thier favorite cities list.
+- Users will recieve notification if the city has successfuly been added to or deleted from thier favorite cities list.
 
 ## Folder/File_structure
 
 ### ui:
 
-- This folder contains complex components for each features of the dashboard performing the various functionalities.
+- This folder contains the complex components for each features of the dashboard performing the various functionalities.
 
 ### components:
 
@@ -79,7 +79,7 @@ npm install
 
 ### utils:
 
-- This folder contains re-usable functions that can be used anyware within the application.
+- This folder contains re-usable functions for formating data within the application.
 
 ### assets:
 

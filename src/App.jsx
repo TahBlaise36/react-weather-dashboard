@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard.jsx";
 import LoginPage from "./authentication/LoginPage.jsx";
 import SignUpPage from "./authentication/SignUpPage.jsx";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Navigate replace to="login" />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route
+            path="dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUpPage />} />
         </Routes>

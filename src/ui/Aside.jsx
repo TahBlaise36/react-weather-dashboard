@@ -3,7 +3,7 @@ import styles from "./Aside.module.css";
 import {
   deleteFavoriteCity,
   getFavoriteCities,
-} from "../services/api.favoriteCities";
+} from "../services/apiFavoriteCities";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
@@ -18,7 +18,7 @@ export default function Aside({
   const {
     isLoading,
     data: favCities,
-    // error,
+    error,
   } = useQuery({
     queryKey: ["favCities"],
     queryFn: getFavoriteCities,
@@ -39,9 +39,9 @@ export default function Aside({
             <h3>Loading...</h3>
           </div>
         )}
-        {!isLoading && !favCities && (
+        {!isLoading && error && (
           <div className={styles.fav_day_details}>
-            <h3>No Cities yet</h3>
+            <h3>Coudn't load the Cities</h3>
           </div>
         )}
         {favCities &&

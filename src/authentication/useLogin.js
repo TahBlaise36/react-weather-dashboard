@@ -11,6 +11,7 @@ export function useLogin() {
     onSuccess: (user) => {
       console.log(user);
       navigate("/dashboard");
+      toast.success("Congratulations! Login Successful");
     },
     onError: (err) => {
       console.log("ERROR", err);

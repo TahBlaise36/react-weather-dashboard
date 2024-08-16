@@ -1,16 +1,24 @@
 import { useState } from "react";
 import styles from "./SignUpPage.module.css";
 import { Link } from "react-router-dom";
+import { useSignup } from "./useSignup";
 
 export default function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { signup, isLoading } = useSignup();
+
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     if (!name || !email || !password) return;
+
+    signup({ name, email, password });
+    setName("");
+    setEmail("");
+    setPassword("");
   }
   return (
     <div className={styles.sign_up_form}>
@@ -23,6 +31,7 @@ export default function SignUpPage() {
           onChange={(e) => setName(e.target.value)}
           placeholder="Username"
           required
+          disabled={isLoading}
         />
         <input
           type="email"
@@ -31,6 +40,7 @@ export default function SignUpPage() {
           id={styles.email}
           placeholder="Useremail"
           required
+          disabled={isLoading}
         />
         <input
           type="password"
@@ -38,6 +48,7 @@ export default function SignUpPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Userpassword"
+          disabled={isLoading}
         />
         <input type="submit" value="Sign up" />
 
