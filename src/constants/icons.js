@@ -5,6 +5,7 @@ import rain from "../assets/rain.png";
 import snow from "../assets/snow.png";
 import wind from "../assets/wind.png";
 import humidity from "../assets/humidity.png";
+import empty from "../assets/empty.png";
 
 export default {
   clear,
@@ -14,4 +15,5 @@ export default {
   snow,
   wind,
   humidity,
+  empty,
 };

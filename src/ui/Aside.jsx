@@ -6,6 +6,7 @@ import {
 } from "../services/apiFavoriteCities";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+// import icons from "../constants/icons";
 
 export default function Aside({
   // favCities,
@@ -14,7 +15,6 @@ export default function Aside({
   onSelectFavCity,
   onDeleteFavCity,
 }) {
-  // console.log(favCities);
   const {
     isLoading,
     data: favCities,
@@ -34,30 +34,47 @@ export default function Aside({
         </p>
       </div>
       <div className={styles.fav_days_details_box}>
+        {/* Display while data is loading */}
         {isLoading && (
-          <div className={styles.fav_day_details}>
-            <h3>Loading...</h3>
+          <div className={styles.fav_days_details_box}>
+            <div className={styles.fav_day_details}>
+              <h3>Loading...</h3>
+            </div>
           </div>
         )}
-        {!isLoading && error && (
-          <div className={styles.fav_day_details}>
-            <h3>Coudn't load the Cities</h3>
+
+        {/* Display if there is an error */}
+        {error && (
+          <div className={styles.no_day_details}>
+            <h3>{error.message}</h3>
           </div>
         )}
-        {favCities &&
-          favCities.map((city) => (
-            <FavoriteDayDetails
-              key={city.id}
-              id={city.id}
-              city={city.city}
-              country={city.country}
-              date={city.date}
-              onSetCity={onSetCity}
-              selectedCityId={selectedCityId}
-              onSelectFavCity={onSelectFavCity}
-              onDeleteFavCity={onDeleteFavCity}
-            />
-          ))}
+
+        {/* Display when the list is empty */}
+        {!isLoading && !error && favCities && favCities.length === 0 && (
+          <div className={styles.no_day_details}>
+            <h3>Your List is Empty</h3>
+          </div>
+        )}
+
+        {/* Display when there are favorite cities */}
+        {!isLoading && !error && favCities && favCities.length > 0 && (
+          <div className={styles.fav_days_details_box}>
+            {favCities.map((city) => (
+              <FavoriteDayDetails
+                key={city.id}
+                id={city.id}
+                city={city.city}
+                country={city.country}
+                date={city.date}
+                onSetCity={onSetCity}
+                selectedCityId={selectedCityId}
+                onSelectFavCity={onSelectFavCity}
+                onDeleteFavCity={onDeleteFavCity}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </aside>
   );

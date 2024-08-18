@@ -52,14 +52,14 @@ function AddCityButton({ weatherData, onAddFavCity }) {
         queryKey: ["favCities"],
       });
     },
-    onError: (err) => toast.error(err.message),
+    onError: () => toast.error(`${weatherData.city.name} already exist`),
   });
 
   if (!weatherData) return;
 
   function handleAddCity() {
     const newCity = {
-      id: weatherData.city.id,
+      city_id: weatherData.city.id,
       city: weatherData.city.name,
       country: getCountryName(weatherData.city.country),
       countryCode: weatherData.city.country,

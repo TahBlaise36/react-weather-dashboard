@@ -9,7 +9,7 @@ export default function Weather({ weatherData, isLoading, error }) {
     return (
       <div className={styles.error_box}>
         <div></div>
-        <h2>You are offline</h2>
+        <h2>Coudn't load your data</h2>
         <p>Please check your connection</p>
       </div>
     );
@@ -85,19 +85,20 @@ function TodayWeather({ country, city, todaysData }) {
           <div className={styles.day_box}>
             <h3>{day}</h3>
             <div>
+              <p>{/* {month}, {year} */}</p>
               <p>
-                {month}, {year}
-              </p>
-              <p>
-                {time} {period}
+                {/* {time}  */}
+                {/* {period} */}
               </p>
             </div>
           </div>
           <p className={styles.city_box}>
-            <span></span>
-            <span className={styles.location}>
+            <p className={styles.location}>
+              {month}, {year}
+            </p>
+            <p className={styles.location}>
               {city}, {country}
-            </span>
+            </p>
           </p>
         </div>
         <div>
@@ -121,10 +122,10 @@ function NextDaysWeather({ list }) {
 
   return (
     <div className={styles.next_days_details_box}>
-      {newList.map((day) => (
+      {newList.map((day, i) => (
         <DayDetails
           key={day.dt}
-          id={day.dt}
+          id={i + 1}
           dateText={day.dt_txt}
           temp={day.main.temp}
           detail={day.weather[0].main}
@@ -135,6 +136,7 @@ function NextDaysWeather({ list }) {
 }
 
 function DayDetails({ id, dateText, img, temp, detail }) {
+  const isFirstDay = id === 1;
   const date = dateText.slice().split(" ")[0];
   const formatedDay = formatDate(date);
   const deg = (temp - 273.15).toFixed(0);
@@ -167,8 +169,10 @@ function DayDetails({ id, dateText, img, temp, detail }) {
   }
 
   return (
-    <div className={`${styles.day_details}`}>
-      <h4 className={styles.day}>{day}</h4>
+    <div className={`${styles.day_details} ${isFirstDay ? styles.active : ""}`}>
+      <h4 className={`${styles.day} ${isFirstDay ? styles.active : ""}`}>
+        {isFirstDay ? "Today" : day}
+      </h4>
       <div className={styles.small_weather_img_box}>
         <img src={imageSrc} alt="cloud_icon" />
       </div>

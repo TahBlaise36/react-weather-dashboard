@@ -1,3 +1,7 @@
+img {
+  width: 100%;
+}
+
 .aside {
   /* background-color: lightblue; */
   padding: 0 1rem 0 0;
@@ -32,6 +36,23 @@
 
 .fav_days_details_box::-webkit-scrollbar {
   display: none;
+}
+
+.no_day_details {
+  width: 15rem;
+  /* max-width: 20rem; */
+  background-color: var(--foreground-color);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty_image_box {
+  height: 5rem;
+  width: 6rem;
 }
 
 .fav_day_details {

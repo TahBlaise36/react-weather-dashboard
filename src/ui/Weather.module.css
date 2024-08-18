@@ -73,9 +73,9 @@
   margin-bottom: 0.2rem;
 }
 
-.day_location_details .city_box {
+/* .day_location_details .city_box {
   margin-top: -6px;
-}
+} */
 
 .today_weather_box .temp {
   color: var(--light-text-color);
@@ -153,10 +153,18 @@
   align-items: center;
 }
 
+.next_days_details_box .day_details.active {
+  background-color: var(--primary-color);
+}
+
 .next_days_details_box .day {
   color: var(--gray-text-color);
   margin-bottom: 1rem;
   position: relative;
+}
+
+.next_days_details_box .day.active {
+  color: var(--light-text-color);
 }
 
 .next_days_details_box .day::after {
@@ -219,9 +227,9 @@
     font-size: 1rem;
   }
 
-  .day_location_details .city_box {
+  /* .day_location_details .city_box {
     margin-top: -8px;
-  }
+  } */
 
   .today_weather_box {
     padding: 1rem 1.5rem;
