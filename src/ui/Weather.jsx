@@ -92,16 +92,16 @@ function TodayWeather({ country, city, todaysData }) {
               </p>
             </div>
           </div>
-          <p className={styles.city_box}>
+          <div className={styles.city_box}>
             <p className={styles.location}>
               {month}, {year}
             </p>
             <p className={styles.location}>
               {city}, {country}
             </p>
-          </p>
+          </div>
         </div>
-        <div>
+        <div className="weather_details">
           <span className={styles.temp}>{deg}</span>
           <span className={styles.temp_text}>{description}</span>
         </div>

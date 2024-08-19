@@ -7,10 +7,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addFavoriteCity } from "../services/apiFavoriteCities";
 import toast from "react-hot-toast";
 
-export default function Header({ weatherData, onSetCity, onAddFavCity }) {
+export default function Header({ weatherData, city, onSetCity, onAddFavCity }) {
   return (
     <header className={styles.header}>
-      <SearchBox onSetCity={onSetCity} />
+      <SearchBox city={city} onSetCity={onSetCity} />
       <div className={styles.profile_box}>
         {/* <Toggle /> */}
         <AddCityButton weatherData={weatherData} onAddFavCity={onAddFavCity} />
@@ -19,13 +19,13 @@ export default function Header({ weatherData, onSetCity, onAddFavCity }) {
   );
 }
 
-function SearchBox({ onSetCity }) {
-  const [query, setQuery] = useState();
+function SearchBox({ city, onSetCity }) {
+  const [query, setQuery] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
     onSetCity(query);
-    // setQuery("");
+    setQuery("");
   }
 
   return (

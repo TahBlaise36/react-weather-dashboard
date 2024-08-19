@@ -10,7 +10,7 @@ export async function getFavoriteCities() {
     throw new Error("Cities could not be loaded");
   }
 
-  console.log(favoriteCities);
+  // console.log(favoriteCities);
 
   return favoriteCities;
 }

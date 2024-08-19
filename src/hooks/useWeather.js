@@ -6,7 +6,7 @@ export function useWeather(city) {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [location, setLocation] = useState("yaounde");
+  const location = "yaounde";
 
   useEffect(
     function () {

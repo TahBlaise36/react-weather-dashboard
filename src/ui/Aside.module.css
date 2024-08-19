@@ -61,10 +61,19 @@ img {
   background-color: var(--foreground-color);
   border-radius: 20px;
   padding: 1rem 1.5rem;
+  /* box-shadow: 0 0 15px rgba(49, 46, 58, 0.2); */
 
   display: flex;
   justify-content: space-between;
   transition: background-color 0.3s;
+}
+
+.fav_day_details:hover {
+  background-color: var(--hover-foreground-color);
+}
+.fav_day_details.active {
+  background-color: var(--hover-foreground-color);
+  /* background-color: var(--primary-color); */
 }
 
 .fav_day_details .fav_stats {
@@ -74,34 +83,38 @@ img {
   gap: 0.5rem;
 }
 
-.remove_btn {
-  background-color: var(--error-background);
-  color: var(--error-color);
-  border: none;
-  /* height: 1.5rem;
-  width: 1.5rem; */
+.fav_day_details .remove_btn {
+  background: none;
+  border: 1.5px solid var(--gray-text-color);
+  color: var(--gray-text-color);
   padding: 0.5rem;
   font-size: 0.6rem;
-  font-weight: 700;
+  font-weight: bold;
   text-transform: uppercase;
   border-radius: 6px;
 }
 
-.fav_day_details:hover {
-  background-color: var(--hover-foreground-color);
-}
-.fav_day_details.active {
-  background-color: var(--hover-foreground-color);
+/* .fav_day_details:hover .remove_btn {
+  border: 1.5px solid var(--light-text-color);
+  color: var(--light-text-color);
+} */
+
+.fav_day_details.active .remove_btn {
+  background-color: var(--gray-text-color);
+  /* border: 1.5px solid var(--light-text-color); */
+  color: var(--background-color);
 }
 
-.fav_day_details .date {
-  color: var(--gray-text-color);
-  font-size: 0.7rem;
-}
+.fav_day_details .date,
 .fav_day_details .temp_text {
   color: var(--gray-text-color);
   font-size: 0.7rem;
 }
+
+/* .fav_day_details.active .date,
+.fav_day_details.active .temp_text {
+  color: var(--light-text-color);
+} */
 
 .fav_day_details .temp {
   font-size: 1.5rem;

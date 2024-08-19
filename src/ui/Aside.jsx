@@ -10,9 +10,8 @@ import toast from "react-hot-toast";
 
 export default function Aside({
   // favCities,
+  weatherData,
   onSetCity,
-  selectedCityId,
-  onSelectFavCity,
   onDeleteFavCity,
 }) {
   const {
@@ -63,13 +62,12 @@ export default function Aside({
             {favCities.map((city) => (
               <FavoriteDayDetails
                 key={city.id}
-                id={city.id}
+                id={city.city_id}
                 city={city.city}
                 country={city.country}
                 date={city.date}
                 onSetCity={onSetCity}
-                selectedCityId={selectedCityId}
-                onSelectFavCity={onSelectFavCity}
+                weatherData={weatherData}
                 onDeleteFavCity={onDeleteFavCity}
               />
             ))}
@@ -86,8 +84,7 @@ function FavoriteDayDetails({
   country,
   date,
   onSetCity,
-  selectedCityId,
-  onSelectFavCity,
+  weatherData,
   onDeleteFavCity,
 }) {
   const queryClient = useQueryClient();
@@ -104,9 +101,8 @@ function FavoriteDayDetails({
     onError: (err) => toast.error(err.message),
   });
 
-  const isSelected = selectedCityId === id;
+  const isSelected = weatherData?.city.id === id;
   function handleSelect() {
-    onSelectFavCity(id);
     onSetCity(city);
   }
 
@@ -130,7 +126,7 @@ function FavoriteDayDetails({
           className={styles.remove_btn}
           disabled={isLoading}
         >
-          delete
+          Delete
         </button>
         <p className={styles.date}>{date}</p>
       </div>

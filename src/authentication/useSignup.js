@@ -15,7 +15,7 @@ export function useSignup() {
       navigate("/login");
     },
     onError: (err) => {
-      console.log(err);
+      toast.error(err.message);
     },
   });
 

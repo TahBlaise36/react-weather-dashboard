@@ -46,13 +46,6 @@ function Dashboard() {
   const [city, setCity] = useState("");
   const { weatherData, error, isLoading } = useWeather(city);
   const [favCities, setFavCities] = useState(initialCities);
-  const [selectedCityId, setSelectedCityId] = useState(2220957);
-
-  // 2220957
-  // console.log(weatherData);
-  //   const cityId = weatherData?.city.id;
-  //   console.log(cityId);
-  //   console.log(selectedCityId);
 
   function handleAddFavCity(newCity) {
     setFavCities((cities) =>
@@ -60,12 +53,6 @@ function Dashboard() {
         ? cities
         : [newCity, ...cities]
     );
-  }
-
-  function handleSelectFavCity(id) {
-    setSelectedCityId(id);
-    // const searchCityId = favCities.find((cities) => cities.city === city)?.id;
-    // setSelectedCityId((curId) => (cityId ? cityId : curId));
   }
 
   function handleDeleteFavCity(id) {
@@ -89,9 +76,8 @@ function Dashboard() {
       />
       <Aside
         favCities={favCities}
+        weatherData={weatherData}
         onSetCity={setCity}
-        selectedCityId={selectedCityId}
-        onSelectFavCity={handleSelectFavCity}
         onDeleteFavCity={handleDeleteFavCity}
       />
     </div>
