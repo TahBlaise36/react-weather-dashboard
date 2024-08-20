@@ -23,6 +23,8 @@ export default function Aside({
     queryFn: getFavoriteCities,
   });
 
+  console.log(favCities);
+
   return (
     <aside className={styles.aside}>
       <div className={styles.aside_header}>

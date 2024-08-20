@@ -108,12 +108,12 @@
   right: -14px;
 }
 
-.location,
-.temp_text {
+.today_weather_box .location,
+.today_weather_box .temp_text {
   color: var(--gray-text-color);
 }
 
-.location {
+.today_weather_box .location {
   font-size: 0.8rem;
 }
 
@@ -246,6 +246,10 @@
     font-size: 1.6rem;
   }
 
+  .today_weather_box .location {
+    font-size: 0.7rem;
+  }
+
   .today_weather_box .temp {
     font-size: 3.5rem;
   }
@@ -300,5 +304,11 @@
   .small_weather_img_box {
     height: 2rem;
     width: 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .next_days_details_box .day_details {
+    padding: 0.7rem;
   }
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import Toggle from "../components/Toggle";
 
 import styles from "./Header.module.css";
@@ -21,6 +21,11 @@ export default function Header({ weatherData, city, onSetCity, onAddFavCity }) {
 
 function SearchBox({ city, onSetCity }) {
   const [query, setQuery] = useState("");
+  const inputEl = useRef(null);
+
+  useEffect(function () {
+    inputEl.current.focus();
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,6 +40,7 @@ function SearchBox({ city, onSetCity }) {
         placeholder="Search for City here..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        ref={inputEl}
       />
       <button className={styles.seach_btn}>Search</button>
     </form>

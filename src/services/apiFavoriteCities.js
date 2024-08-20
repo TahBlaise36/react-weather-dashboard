@@ -68,7 +68,7 @@ export async function deleteFavoriteCity(id) {
   const { data, error } = await supabase
     .from("favorite_cities")
     .delete()
-    .eq("id", id);
+    .eq("city_id", id);
 
   if (error) {
     console.log(error);
