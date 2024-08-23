@@ -1,19 +1,15 @@
-// import { useEffect } from "react";
-import styles from "./Aside.module.css";
 import {
   deleteFavoriteCity,
   getFavoriteCities,
 } from "../services/apiFavoriteCities";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
-// import icons from "../constants/icons";
+import { useCity } from "../context/CityContext";
+// import { useFavoriteCities } from "../context/FavoriteCitiesContext";
 
-export default function Aside({
-  // favCities,
-  weatherData,
-  onSetCity,
-  onDeleteFavCity,
-}) {
+import toast from "react-hot-toast";
+import styles from "./Aside.module.css";
+
+export default function Aside() {
   const {
     isLoading,
     data: favCities,
@@ -23,7 +19,7 @@ export default function Aside({
     queryFn: getFavoriteCities,
   });
 
-  console.log(favCities);
+  // console.log(favCities);
 
   return (
     <aside className={styles.aside}>
@@ -68,9 +64,6 @@ export default function Aside({
                 city={city.city}
                 country={city.country}
                 date={city.date}
-                onSetCity={onSetCity}
-                weatherData={weatherData}
-                onDeleteFavCity={onDeleteFavCity}
               />
             ))}
           </div>
@@ -80,15 +73,10 @@ export default function Aside({
   );
 }
 
-function FavoriteDayDetails({
-  id,
-  city,
-  country,
-  date,
-  onSetCity,
-  weatherData,
-  onDeleteFavCity,
-}) {
+function FavoriteDayDetails({ id, city, country, date }) {
+  const { onSetCity, weatherData } = useCity();
+  // const {onDeleteFavCity} = useFavoriteCities();
+
   const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation({
     // mutationFn: (id) => deleteFavoriteCity(id),

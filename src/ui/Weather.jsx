@@ -3,8 +3,11 @@ import Spinner from "../components/Spinner";
 import formatDate, { getCountryName } from "../utils/helpers";
 import styles from "./Weather.module.css";
 import icons from "../constants/icons";
+import { useCity } from "../context/CityContext";
 
-export default function Weather({ weatherData, isLoading, error }) {
+export default function Weather() {
+  const { weatherData, isLoading } = useCity();
+
   if (!weatherData)
     return (
       <div className={styles.error_box}>
@@ -47,12 +50,12 @@ export default function Weather({ weatherData, isLoading, error }) {
 function TodayWeather({ country, city, todaysData }) {
   const { dt_txt, main, weather } = todaysData;
   const date = dt_txt.slice().split(" ")[0];
-  const time = dt_txt.slice().split(" ")[1];
+  // const time = dt_txt.slice().split(" ")[1];
   const formatedDay = formatDate(date);
   const day = formatedDay.slice().split(", ")[0];
   const month = formatedDay.slice().split(", ")[1];
   const year = formatedDay.slice().split(" ")[3];
-  const period = formatedDay.slice().split(" ")[6];
+  // const period = formatedDay.slice().split(" ")[6];
   const deg = (main.temp - 273.15).toFixed(0);
   const description = weather[0].description;
   const detail = weather[0].main;
@@ -135,7 +138,7 @@ function NextDaysWeather({ list }) {
   );
 }
 
-function DayDetails({ id, dateText, img, temp, detail }) {
+function DayDetails({ id, dateText, temp, detail }) {
   const isFirstDay = id === 1;
   const date = dateText.slice().split(" ")[0];
   const formatedDay = formatDate(date);

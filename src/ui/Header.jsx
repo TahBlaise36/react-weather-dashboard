@@ -1,25 +1,31 @@
 import { useEffect, useRef, useState } from "react";
-// import Toggle from "../components/Toggle";
-
-import styles from "./Header.module.css";
-import { formatShortDate, getCountryName } from "../utils/helpers";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { useCity } from "../context/CityContext";
+// import { useFavoriteCities } from "../context/FavoriteCitiesContext";
 import { addFavoriteCity } from "../services/apiFavoriteCities";
+import { formatShortDate, getCountryName } from "../utils/helpers";
+
+// import Toggle from "../components/Toggle";
+import styles from "./Header.module.css";
 import toast from "react-hot-toast";
 
-export default function Header({ weatherData, city, onSetCity, onAddFavCity }) {
+export default function Header() {
   return (
     <header className={styles.header}>
-      <SearchBox city={city} onSetCity={onSetCity} />
+      <SearchBox />
       <div className={styles.profile_box}>
         {/* <Toggle /> */}
-        <AddCityButton weatherData={weatherData} onAddFavCity={onAddFavCity} />
+        <AddCityButton />
       </div>
     </header>
   );
 }
 
-function SearchBox({ city, onSetCity }) {
+function SearchBox() {
+  // 1) USE A CONTEXT
+  const { onSetCity } = useCity();
+
   const [query, setQuery] = useState("");
   const inputEl = useRef(null);
 
@@ -47,7 +53,10 @@ function SearchBox({ city, onSetCity }) {
   );
 }
 
-function AddCityButton({ weatherData, onAddFavCity }) {
+function AddCityButton() {
+  const { weatherData } = useCity();
+  // const { onAddFavCity } = useFavoriteCities();
+
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
