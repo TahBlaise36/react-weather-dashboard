@@ -1,7 +1,6 @@
 import styles from "./HeadingSkelecton.module.css";
-
-function HeadingSkelecton() {
+function headingSkelecton() {
   return <div className={`${styles.skelecton} ${styles.skelecton_text}`}></div>;
 }
 
-export default HeadingSkelecton;
+export default headingSkelecton;
