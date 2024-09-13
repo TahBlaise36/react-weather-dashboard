@@ -1,4 +1,4 @@
-export default function formatDate(timestamp) {
+function formatDate(timestamp) {
   const date = new Date(timestamp);
 
   const options = {
@@ -16,7 +16,7 @@ export default function formatDate(timestamp) {
   return formatter.format(date);
 }
 
-export function formatShortDate(dateString) {
+function formatShortDate(dateString) {
   const date = new Date(dateString);
 
   const options = {
@@ -29,12 +29,12 @@ export function formatShortDate(dateString) {
   return formatter.format(date);
 }
 
-export function getCountryName(countryCode, locale = "en-US") {
+function getCountryName(countryCode, locale = "en-US") {
   const regionNames = new Intl.DisplayNames([locale], { type: "region" });
   return regionNames.of(countryCode);
 }
 
-export function getFlagEmoji(countryCode) {
+function getFlagEmoji(countryCode) {
   // Ensure the country code is uppercase
   const codePoints = countryCode
     .toUpperCase()
@@ -43,3 +43,21 @@ export function getFlagEmoji(countryCode) {
 
   return String.fromCodePoint(...codePoints);
 }
+
+function formatTime(date) {
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    year: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(date);
+}
+
+export {
+  formatDate,
+  formatShortDate,
+  formatTime,
+  getCountryName,
+  getFlagEmoji,
+};

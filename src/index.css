@@ -64,15 +64,15 @@ h3 {
 }
 
 @media (max-width: 800px) {
+  .app {
+    grid-template-columns: 1fr 1fr;
+    column-gap: normal;
+  }
   .primary-header-box {
     margin-bottom: 0.5rem;
   }
 
   .primary_header {
     font-size: 1.3rem;
-  }
-
-  .app {
-    grid-template-columns: 1fr 1fr;
   }
 }

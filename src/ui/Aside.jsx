@@ -8,6 +8,8 @@ import { useCity } from "../context/CityContext";
 
 import toast from "react-hot-toast";
 import styles from "./Aside.module.css";
+import AsideSkelecton from "../components/AsideSkelecton";
+import HeadingSkelecton from "../components/headingSkelecton";
 
 export default function Aside() {
   const {
@@ -23,22 +25,20 @@ export default function Aside() {
 
   return (
     <aside className={styles.aside}>
-      <div className={styles.aside_header}>
-        <h2 className={styles.primary_header}>Favorite Cities</h2>
-        <p className={styles.show_cities_btn}>
-          <span>Show All</span>
-          <span></span>
-        </p>
-      </div>
+      {isLoading ? (
+        <HeadingSkelecton />
+      ) : (
+        <div className={styles.aside_header}>
+          <h2 className={styles.primary_header}>Favorite Cities</h2>
+          <p className={styles.show_cities_btn}>
+            <span>Show All</span>
+            <span></span>
+          </p>
+        </div>
+      )}
       <div className={styles.fav_days_details_box}>
         {/* Display while data is loading */}
-        {isLoading && (
-          <div className={styles.fav_days_details_box}>
-            <div className={styles.fav_day_details}>
-              <h3>Loading...</h3>
-            </div>
-          </div>
-        )}
+        {isLoading && <AsideSkelecton />}
 
         {/* Display if there is an error */}
         {error && (
@@ -74,6 +74,7 @@ export default function Aside() {
 }
 
 function FavoriteDayDetails({ id, city, country, date }) {
+  // 3) CONSUMING CONTEXT VALUE
   const { onSetCity, weatherData } = useCity();
   // const {onDeleteFavCity} = useFavoriteCities();
 

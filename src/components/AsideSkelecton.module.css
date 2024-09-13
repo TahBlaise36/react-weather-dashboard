@@ -1,0 +1,67 @@
+.fav_days_details_box {
+  max-height: 75vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fav_days_details_box::-webkit-scrollbar {
+  display: none;
+}
+
+.fav_day_details {
+  /* background-color: var(--foreground-color); */
+  width: 15rem;
+  height: 6.5rem;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.3s;
+}
+
+.skelecton {
+  opacity: 0.7;
+  animation: skelecton-loading 1s linear infinite alternate;
+}
+
+.skelecton_text {
+  width: 12rem;
+  height: 1.5rem;
+  border-radius: 20px;
+}
+
+@keyframes skelecton-loading {
+  0% {
+    /* background-color: hsl(199, 20%, 70%); */
+    background-color: hsl(255, 12%, 20%);
+  }
+
+  100% {
+    /* background-color: hsl(200, 20%, 95%); */
+    background-color: hsl(255, 12%, 30%);
+  }
+}
+
+@media (max-width: 800px) {
+  .fav_days_details_box {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .fav_day_details {
+    width: 6rem;
+    padding: 0.8rem;
+    flex: 0 0 auto;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+}

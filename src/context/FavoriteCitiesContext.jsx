@@ -34,6 +34,7 @@ const initialCities = [
   },
 ];
 
+// 1) CREATE A CONTEXT
 const FavoriteCitiesContext = createContext();
 
 function FavoriteCitiesProvider({ children }) {
@@ -54,6 +55,7 @@ function FavoriteCitiesProvider({ children }) {
   }
 
   return (
+    // 2) PROVIDE VALUE TO CHILD COMPONENTS
     <FavoriteCitiesContext.Provider
       value={{
         favCities,
@@ -68,6 +70,10 @@ function FavoriteCitiesProvider({ children }) {
 
 function useFavoriteCities() {
   const context = useContext(FavoriteCitiesContext);
+  if (context === undefined)
+    throw new Error(
+      "FavoriteCitiesContext was use out of the FavoriteCitiesProvider"
+    );
   return context;
 }
 

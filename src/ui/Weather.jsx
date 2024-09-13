@@ -1,14 +1,26 @@
-// import { useState } from "react";
-import Spinner from "../components/Spinner";
-import formatDate, { getCountryName } from "../utils/helpers";
-import styles from "./Weather.module.css";
-import icons from "../constants/icons";
 import { useCity } from "../context/CityContext";
+import { useEffect, useState } from "react";
+
+import styles from "./Weather.module.css";
+import { formatDate, formatTime, getCountryName } from "../utils/helpers";
+import Spinner from "../components/Spinner";
+import icons from "../constants/icons";
+import WeatherSkelecton from "../components/WeatherSkelecton";
 
 export default function Weather() {
-  const { weatherData, isLoading } = useCity();
+  // 3) CONSUMING CONTEXT VALUE
+  const { weatherData, isLoading, error } = useCity();
 
-  if (!weatherData)
+  if (isLoading)
+    return (
+      <div className={styles.main}>
+        <WeatherSkelecton />
+      </div>
+    );
+  // console.log(error);
+
+  // Show error message if there's an issue fetching the data
+  if (error)
     return (
       <div className={styles.error_box}>
         <div></div>
@@ -16,46 +28,43 @@ export default function Weather() {
         <p>Please check your connection</p>
       </div>
     );
+
+  // Ensure weatherData exists before destructuring
+  if (!weatherData) return <div className={styles.error_box}></div>;
+
+  // Destructure list and city only if weatherData is not null/undefined
   const { list, city } = weatherData;
 
   return (
     <main className={styles.main}>
-      {!isLoading && (
-        <>
-          <div className={styles.today_details_box}>
-            <div className={styles.primary_header_box}>
-              <h2 className={styles.primary_header}>Today's Weather</h2>
-            </div>
+      <TodayWeather
+        country={getCountryName(city.country)}
+        city={city.name}
+        todaysData={list[0]}
+      />
 
-            <TodayWeather
-              country={getCountryName(city.country)}
-              city={city.name}
-              todaysData={list[0]}
-            />
-          </div>
-          <div>
-            <div className={styles.primary_header_box}>
-              <h2 className={styles.primary_header}>Weekly Forecast</h2>
-            </div>
-
-            <NextDaysWeather list={list} />
-          </div>
-        </>
-      )}
-      {isLoading && <Spinner />}
+      <NextDaysWeather title="Weekly Forecast" list={list} />
     </main>
   );
+}
+
+function Time() {
+  const [time, setTime] = useState(formatTime(new Date()));
+
+  useEffect(function () {
+    const id = setInterval(function () {
+      setTime(formatTime(new Date()));
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, []);
+  return <p className={styles.location}>{time}</p>;
 }
 
 function TodayWeather({ country, city, todaysData }) {
   const { dt_txt, main, weather } = todaysData;
   const date = dt_txt.slice().split(" ")[0];
-  // const time = dt_txt.slice().split(" ")[1];
-  const formatedDay = formatDate(date);
-  const day = formatedDay.slice().split(", ")[0];
-  const month = formatedDay.slice().split(", ")[1];
-  const year = formatedDay.slice().split(" ")[3];
-  // const period = formatedDay.slice().split(" ")[6];
+  const day = formatDate(date).slice().split(", ")[0];
   const deg = (main.temp - 273.15).toFixed(0);
   const description = weather[0].description;
   const detail = weather[0].main;
@@ -82,41 +91,39 @@ function TodayWeather({ country, city, todaysData }) {
   }
 
   return (
-    <div className={styles.today_weather_box}>
-      <div>
-        <div className={styles.day_location_details}>
-          <div className={styles.day_box}>
-            <h3>{day}</h3>
-            <div>
-              <p>{/* {month}, {year} */}</p>
-              <p>
-                {/* {time}  */}
-                {/* {period} */}
+    <div className={styles.today_details_box}>
+      <div className={styles.primary_header_box}>
+        <h2 className={styles.primary_header}>Today's Weather</h2>
+      </div>
+
+      <div className={styles.today_weather_box}>
+        <div>
+          <div className={styles.day_location_details}>
+            <div className={styles.day_box}>
+              <h3>{day}</h3>
+              <div></div>
+            </div>
+            <div className={styles.city_box}>
+              <Time />
+              <p className={styles.location}>
+                {city}, {country}
               </p>
             </div>
           </div>
-          <div className={styles.city_box}>
-            <p className={styles.location}>
-              {month}, {year}
-            </p>
-            <p className={styles.location}>
-              {city}, {country}
-            </p>
+          <div className="weather_details">
+            <span className={styles.temp}>{deg}</span>
+            <span className={styles.temp_text}>{description}</span>
           </div>
         </div>
-        <div className="weather_details">
-          <span className={styles.temp}>{deg}</span>
-          <span className={styles.temp_text}>{description}</span>
+        <div className={styles.big_weather_img_box}>
+          <img src={imageSrc} alt={detail} />
         </div>
-      </div>
-      <div className={styles.big_weather_img_box}>
-        <img src={imageSrc} alt={detail} />
       </div>
     </div>
   );
 }
 
-function NextDaysWeather({ list }) {
+function NextDaysWeather({ title, list }) {
   let newList = [];
   let dayStep = 8;
   for (let i = 0; i < list.length; i += dayStep) {
@@ -124,16 +131,22 @@ function NextDaysWeather({ list }) {
   }
 
   return (
-    <div className={styles.next_days_details_box}>
-      {newList.map((day, i) => (
-        <DayDetails
-          key={day.dt}
-          id={i + 1}
-          dateText={day.dt_txt}
-          temp={day.main.temp}
-          detail={day.weather[0].main}
-        />
-      ))}
+    <div>
+      <div className={styles.primary_header_box}>
+        <h2 className={styles.primary_header}>{title}</h2>
+      </div>
+
+      <div className={styles.next_days_details_box}>
+        {newList.map((day, i) => (
+          <DayDetails
+            key={day.dt}
+            id={i + 1}
+            dateText={day.dt_txt}
+            temp={day.main.temp}
+            detail={day.weather[0].main}
+          />
+        ))}
+      </div>
     </div>
   );
 }

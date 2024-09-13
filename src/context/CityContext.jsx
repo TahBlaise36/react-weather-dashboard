@@ -9,6 +9,7 @@ function CityProvider({ children }) {
   const { weatherData, error, isLoading } = useWeather(city);
 
   return (
+    // 2) PROVIDE VALUE O CHILD COMPONENTS
     <CityContext.Provider
       value={{
         city,
@@ -25,6 +26,8 @@ function CityProvider({ children }) {
 
 function useCity() {
   const context = useContext(CityContext);
+  if (context === undefined)
+    throw new Error("CityContext was use out of the CityProvider");
   return context;
 }
 

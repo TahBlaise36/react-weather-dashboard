@@ -171,16 +171,6 @@ img {
     gap: 0.5rem;
   }
 
-  .fav_day_details {
-    /* width: 15rem;
-        max-width: 20rem; */
-    padding: 0.5rem 1rem;
-
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
   .fav_details p {
     display: none;
   }
