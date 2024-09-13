@@ -6,7 +6,7 @@ function AsideSkelecton() {
   return (
     <div className={styles.fav_days_details_box}>
       {Array.from({ length: numberOfFavDayDetailsBox }, (_, index) => (
-        <div className={`${styles.fav_day_details} ${styles.skelecton}`}></div>
+        <div key={index} className={`${styles.fav_day_details} ${styles.skelecton}`}></div>
       ))}
     </div>
   );

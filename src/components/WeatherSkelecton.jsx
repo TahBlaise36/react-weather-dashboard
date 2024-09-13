@@ -23,7 +23,10 @@ function WeatherSkelecton() {
 
         <div className={styles.next_days_details_box}>
           {Array.from({ length: numberOfdayDetailsBox }, (_, index) => (
-            <div className={`${styles.day_details} ${styles.skelecton}`}></div>
+            <div
+              key={index}
+              className={`${styles.day_details} ${styles.skelecton}`}
+            ></div>
           ))}
         </div>
       </div>
