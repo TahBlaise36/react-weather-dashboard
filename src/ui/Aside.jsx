@@ -9,7 +9,7 @@ import { useCity } from "../context/CityContext";
 import toast from "react-hot-toast";
 import styles from "./Aside.module.css";
 import AsideSkelecton from "../components/AsideSkelecton";
-import HeadingSkelecton from "../components/headingSkelecton";
+import HeadingSkelecton from "../components/HeadingSkelecton";
 
 export default function Aside() {
   const {
